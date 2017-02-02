@@ -11,7 +11,7 @@ int main()
 	int l = 0, r = 0, ans = INF;
 	map <int , int >  cnt;
  
-	while ( l < n ) {
+	while ( l < n ) {	
     	while ( r < n && s.size() < K ) {
        s.insert(A[r]);
        cnt[A[r]]++;

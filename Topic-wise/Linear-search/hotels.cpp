@@ -16,13 +16,16 @@ int main()
 	lli sum = 0;	 
     cin >> n;
    
-    for ( int i = 0; i < n; i++ ) cin >> A[i];
+    for ( int i = 0; i < n; i++ ) 
+    	cin >> A[i];
     
     int l = 0, r = 0;
 	lli ans = 0;
  
-    while ( l < n ) {
-       while ( r < n && sum + A[r] <= M ) {
+    while ( l < n )
+     {
+       while ( r < n && sum + A[r] <= M )
+        {
            sum += A[r];
            r++;
        }

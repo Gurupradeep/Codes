@@ -7,7 +7,7 @@ int main()
 {
 	int n;
 	cin>>n;
-	int cut[10000];
+	int cut[10000	];
 	for(int i=1;i<=n;i++)
 	{
 		cin>>cut[i];

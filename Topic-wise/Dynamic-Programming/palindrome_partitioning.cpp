@@ -56,6 +56,6 @@ int main()
 		{
 			printf("%d ",dp[i][j]);
 		}
-		cout<<endl;
+				cout<<endl;
 	}
 }

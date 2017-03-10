@@ -1,0 +1,168 @@
+INSERTION SORT
+void insertion_sort(int a[],int n)
+{
+    for(int i=1;i<n;i++)
+    {
+        int j=i-1;
+        int temp=a[i];
+        while((j>=0)&&(temp<a[j]))
+        {
+            a[j+1]=a[j];
+            j--;
+        }
+        a[j+1]=temp;
+    }
+}
+
+
+SELECTION SORT
+void selection_sort(int a[],int n)
+{
+    for(int i=0;i<n-1;i++)
+    {
+        int small=a[i];
+        int pos=i;
+        for(int j=i+1;j<n;j++)
+        {
+            if(a[j]<small)
+            {
+                small=a[j];
+                pos=j;
+            }
+        }
+        int temp;
+        temp=a[i];
+        a[i]=a[pos];
+        a[pos]=temp;
+    }
+}
+
+
+BUBBLE SORT
+void bubble_sort(int a[],int n)
+{
+    int i=0,flag=0;
+    while((i<n)&&(flag==0))
+    {
+        flag=1;
+        for(int j=0;j<n-1-i;j++)
+        {
+            if(a[j]>a[j+1])
+            {
+                int temp;
+                temp=a[j];
+                a[j]=a[j+1];
+                a[j+1]=temp;
+                flag=0;
+            }
+        }
+    }
+}
+
+
+MERGE SORT
+void merg(int a[],int s,int mid,int e)
+{
+    int i=s,j=mid+1,k=s,c[100];
+    while((i<=mid)&&(j<=e))
+    {
+        if(a[i]<=a[j])
+        {
+            c[k]=a[i];
+            i++;
+        }
+
+        else
+        {
+            c[k]=a[j];
+            j++;
+        }
+        k++;
+    }
+
+    while(i<=mid)
+    {
+        c[k]=a[i];
+        i++;
+        k++;
+    }
+
+    while(j<=e)
+    {
+        c[k]=a[j];
+        j++;
+        k++;
+    }
+
+    for(i=s;i<=e;i++)
+        a[i]=c[i];
+}
+
+void merge_sort(int a[],int s,int e)
+{
+    if(s==e)
+        return;
+
+    else
+    {
+        int mid=(s+e)/2;
+        merge_sort(a,s,mid);
+        merge_sort(a,mid+1,e);
+        merg(a,s,mid,e);
+    }
+}
+
+
+QUICK SORT
+int partition_(int a[],int s,int e)
+{
+    int piv=s;
+    int i=s+1,j;
+    for(j=s+1;j<=e;j++)
+    {
+        if(a[piv]>=a[j])
+        {
+            int temp;
+            temp=a[j];
+            a[j]=a[i];
+            a[i]=temp;
+            i++;
+        }
+    }
+    int temp1;
+    temp1=a[i-1];
+    a[i-1]=a[piv];
+    a[piv]=temp1;
+    return i-1;
+}
+
+void quick_sort(int a[],int s,int e)
+{
+    if(s>=e)
+        return;
+
+    else
+    {
+        int piv_index; //index of the pivot after partitioning i.e. actual position of the pivot in the array
+        piv_index=partition_(a,s,e);
+        quick_sort(a,s,piv_index-1);
+        quick_sort(a,piv_index+1,e);
+    }
+}
+
+
+NORMAL SORT
+void normal_sort(int a[],int n)
+{
+    for(int i=0;i<n-1;i++)
+        for(int j=i+1;j<n;j++)
+        {
+            if(a[i]>a[j])
+            {
+                int temp;
+                temp=a[i];
+                a[i]=a[j];
+                a[j]=temp;
+            }
+        }
+}
